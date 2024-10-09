@@ -12,8 +12,22 @@ export const RegisterSchema = z.object({
     }),
     confirmPassword: z.string().min(6, {
         message: "Password must be at least 6 characters long"
-    })
-})
+    }),
+    githubLink: z.string().url({
+        message: "Please enter a valid GitHub URL"
+    }).optional(),
+    linkedinLink: z.string().url({
+        message: "Please enter a valid LinkedIn URL"
+    }).optional(),
+    discordHandle: z.string().regex(/^.{3,32}#[0-9]{4}$/, {
+        message: "Please enter a valid Discord handle (e.g., user#1234)"
+    }).optional()
+}).refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match"
+});
+
+
 
 export const LoginSchema = z.object({
     email: z.string().email({

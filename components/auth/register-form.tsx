@@ -28,6 +28,7 @@ const RegisterForm = () => {
       name: "",
       password: "",
       confirmPassword: "",
+      
     },
   });
 
@@ -103,6 +104,57 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="githubLink"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>GitHub Link</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="url"
+                      placeholder="https://github.com/username"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="linkedinLink"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>LinkedIn Link</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="url"
+                      placeholder="https://linkedin.com/in/username"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="discordHandle"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Discord Handle</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="text"
+                      placeholder="username#1234"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
           <Button type="submit" className="w-full" disabled={pending}>
             {loading ? "Loading..." : "Register"}
@@ -111,6 +163,6 @@ const RegisterForm = () => {
       </Form>
     </CardWrapper>
   );
-};
+}
 
 export default RegisterForm;
